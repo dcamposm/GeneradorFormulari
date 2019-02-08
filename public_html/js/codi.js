@@ -7,6 +7,8 @@ function generadorFormulari(){
    var titul = document.createElement("h1");
    var menu = document.createElement("div");
    $(menu).attr("class", "menu");
+   var contForm = document.createElement("div");
+   $(contForm).attr("class", "contForm");
    
    /*---------------------MENU-----------------------*/
    $(menu).append("<h3>Menu</h3>");
@@ -18,7 +20,8 @@ function generadorFormulari(){
    $(titul).append($('#form').val());
    
    $(container).append(titul);
-   $(container).append(menu);
+   $(container).append(contForm);
+   $(container).append(menu);   
    $('main').append(container);
    
 }  
