@@ -10,3 +10,6 @@
 .menu button {
     margin: 2px;
 }
+.contForm {
+    border-top: 1px solid black;
+}
