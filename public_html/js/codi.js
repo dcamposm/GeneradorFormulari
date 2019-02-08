@@ -8,13 +8,13 @@ function generadorFormulari(){
    var menu = document.createElement("div");
    $(menu).attr("class", "menu");
    
-   //-----------------MENU-----------------------
+   /*---------------------MENU-----------------------*/
    $(menu).append("<h3>Menu</h3>");
    $(menu).append("<button id=\"inputText\">Text</button>");
    $(menu).append("<button id=\"inputNum\">Numero</button>");
    $(menu).append("<button id=\"inputMail\">Mail</button>");
    $(menu).append("<button id=\"inputPass\">Password</button>");
-      
+   /*-----------------------------------------------*/   
    $(titul).append($('#form').val());
    
    $(container).append(titul);
