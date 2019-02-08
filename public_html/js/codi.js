@@ -6,7 +6,7 @@ function generadorFormulari(){
 
    $(titul).append($('#form').val());
 
-   $(container).append(titol);
+   $(container).append(titul);
    $('main').append(container);
    
 }  
