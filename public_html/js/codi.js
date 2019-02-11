@@ -23,7 +23,7 @@ function insertInput(){
             $("#contForm_"+formArray[1]).append("Formulari data: <input type=\"date\">");
             break;
         case "File":
-            $("#contForm_")+formArray[1].append("Formulari fitxer: <input type=\"file\">");
+            $("#contForm_"+formArray[1]).append("Formulari fitxer: <input type=\"file\">");
             break;
     }
 };
