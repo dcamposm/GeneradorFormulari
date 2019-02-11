@@ -52,6 +52,4 @@ function generadorFormulari(){
    $("#inputNum_"+nomForm).click(insertInput); 
    $("#inputMail_"+nomForm).click(insertInput); 
    $("#inputPass_"+nomForm).click(insertInput); 
-};  
-
-
+}; 
