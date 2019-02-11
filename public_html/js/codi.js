@@ -1,3 +1,4 @@
+contGlobal = 0;
 $("#boto1").click(generadorFormulari);
 function insertInput(){
     var inp = $(this).text();
@@ -30,23 +31,23 @@ function insertInput(){
 function generadorFormulari(){
    var nomForm = $('#form').val();
    var container = document.createElement("div");
-   $(container).attr("id", nomForm);
+   $(container).attr("id", nomForm+contGlobal);
    $(container).attr("class", "container");
    var titul = document.createElement("h1");
    var menu = document.createElement("div");
    $(menu).attr("class", "menu");
    var contForm = document.createElement("div");
-   $(contForm).attr("id", "contForm_"+nomForm);
-   $(contForm).attr("class", "contForm_"+nomForm);
+   $(contForm).attr("id", "contForm_"+nomForm+contGlobal);
+   $(contForm).attr("class", "contForm");
    
    /*---------------------MENU-----------------------*/
    $(menu).append("<h3>Menu</h3>");
-   $(menu).append("<button id=\"inputText_"+nomForm+"\">Text</button>");
-   $(menu).append("<button id=\"inputNum_"+nomForm+"\">Numero</button>");
-   $(menu).append("<button id=\"inputMail_"+nomForm+"\">Mail</button>");
-   $(menu).append("<button id=\"inputPass_"+nomForm+"\">Password</button>");
-   $(menu).append("<button id=\"inputDate_"+nomForm+"\">Date</button>");
-   $(menu).append("<button id=\"inputFile_"+nomForm+"\">File</button>");
+   $(menu).append("<button id=\"inputText_"+nomForm+contGlobal+"\">Text</button>");
+   $(menu).append("<button id=\"inputNum_"+nomForm+contGlobal+"\">Numero</button>");
+   $(menu).append("<button id=\"inputMail_"+nomForm+contGlobal+"\">Mail</button>");
+   $(menu).append("<button id=\"inputPass_"+nomForm+contGlobal+"\">Password</button>");
+   $(menu).append("<button id=\"inputDate_"+nomForm+contGlobal+"\">Date</button>");
+   $(menu).append("<button id=\"inputFile_"+nomForm+contGlobal+"\">File</button>");
    /*---------------------END------------------------*/   
    $(titul).append(nomForm);
    
@@ -56,12 +57,13 @@ function generadorFormulari(){
    
    $('main').append(container);
    /*--------------------EVENTS-----------------------*/ 
-   $("#inputText_"+nomForm).click(insertInput); 
-   $("#inputNum_"+nomForm).click(insertInput); 
-   $("#inputMail_"+nomForm).click(insertInput); 
-   $("#inputPass_"+nomForm).click(insertInput);
-   $("#inputDate_"+nomForm).click(insertInput);
-   $("#inputFile_"+nomForm).click(insertInput);
+   $("#inputText_"+nomForm+contGlobal).click(insertInput); 
+   $("#inputNum_"+nomForm+contGlobal).click(insertInput); 
+   $("#inputMail_"+nomForm+contGlobal).click(insertInput); 
+   $("#inputPass_"+nomForm+contGlobal).click(insertInput);
+   $("#inputDate_"+nomForm+contGlobal).click(insertInput);
+   $("#inputFile_"+nomForm+contGlobal).click(insertInput);
+   contGlobal++;
 };  
 
 
