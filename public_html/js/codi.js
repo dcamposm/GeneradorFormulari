@@ -45,8 +45,8 @@ function generadorFormulari(){
    $(menu).append("<button id=\"inputNum_"+nomForm+"\">Numero</button>");
    $(menu).append("<button id=\"inputMail_"+nomForm+"\">Mail</button>");
    $(menu).append("<button id=\"inputPass_"+nomForm+"\">Password</button>");
-   $(menu).append("<button id=\"inputDate\">Date</button>");
-   $(menu).append("<button id=\"inputFile\">File</button>");
+   $(menu).append("<button id=\"inputDate_"+nomForm+"\">Date</button>");
+   $(menu).append("<button id=\"inputFile_"+nomForm+"\">File</button>");
    /*---------------------END------------------------*/   
    $(titul).append(nomForm);
    
@@ -60,8 +60,8 @@ function generadorFormulari(){
    $("#inputNum_"+nomForm).click(insertInput); 
    $("#inputMail_"+nomForm).click(insertInput); 
    $("#inputPass_"+nomForm).click(insertInput);
-   $("#inputDate").click(insertInput);
-   $("#inputFile").click(insertInput);
+   $("#inputDate_"+nomForm).click(insertInput);
+   $("#inputFile_"+nomForm).click(insertInput);
 };  
 
 
