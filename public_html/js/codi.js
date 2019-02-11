@@ -19,6 +19,12 @@ function insertInput(){
         case "Password":
             $("#contForm_"+formArray[1]).append("Formulari Password: <input type=\"password\">");
             break;
+        case "Date":
+            $("#contForm_"+formArray[1]).append("Formulari data: <input type=\"date\">");
+            break;
+        case "File":
+            $("#contForm_"+formArray[1]).append("Formulari fitxer: <input type=\"file\">");
+            break;
     }
 };
 function generadorFormulari(){
@@ -39,6 +45,8 @@ function generadorFormulari(){
    $(menu).append("<button id=\"inputNum_"+nomForm+"\">Numero</button>");
    $(menu).append("<button id=\"inputMail_"+nomForm+"\">Mail</button>");
    $(menu).append("<button id=\"inputPass_"+nomForm+"\">Password</button>");
+   $(menu).append("<button id=\"inputDate_"+nomForm+"\">Date</button>");
+   $(menu).append("<button id=\"inputFile_"+nomForm+"\">File</button>");
    /*---------------------END------------------------*/   
    $(titul).append(nomForm);
    
@@ -47,10 +55,13 @@ function generadorFormulari(){
    $(container).append(menu);
    
    $('main').append(container);
-   /*-------------------EVENTOS----------------------*/ 
+   /*--------------------EVENTS-----------------------*/ 
    $("#inputText_"+nomForm).click(insertInput); 
    $("#inputNum_"+nomForm).click(insertInput); 
    $("#inputMail_"+nomForm).click(insertInput); 
-   $("#inputPass_"+nomForm).click(insertInput); 
-}; 
-//prova
+   $("#inputPass_"+nomForm).click(insertInput);
+   $("#inputDate_"+nomForm).click(insertInput);
+   $("#inputFile_"+nomForm).click(insertInput);
+};  
+
+
