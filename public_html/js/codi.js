@@ -9,22 +9,22 @@ function insertInput(){
     //alert(formArray[1]);
     switch (inp){
         case "Text":
-            $("#contForm_"+formArray[1]).append("Formulari text: <input type=\"text\">");
+            $("#contForm_"+formArray[1]).append("<p>Formulari text: <input type=\"text\"></p>");
             break;
         case "Numero":
-            $("#contForm_"+formArray[1]).append("Formulari numero: <input type=\"number\">");
+            $("#contForm_"+formArray[1]).append("<p>Formulari numero: <input type=\"number\"></p>");
             break;
         case "Mail":
-            $("#contForm_"+formArray[1]).append("Formulari correu: <input type=\"email\" value=\"Formulari correu\">");
+            $("#contForm_"+formArray[1]).append("<p>Formulari correu: <input type=\"email\" value=\"Formulari correu\"></p>");
             break;
         case "Password":
-            $("#contForm_"+formArray[1]).append("Formulari Password: <input type=\"password\">");
+            $("#contForm_"+formArray[1]).append("<p>Formulari Password: <input type=\"password\"></p>");
             break;
         case "Date":
-            $("#contForm_"+formArray[1]).append("Formulari data: <input type=\"date\">");
+            $("#contForm_"+formArray[1]).append("<p>Formulari data: <input type=\"date\"></p>");
             break;
         case "File":
-            $("#contForm_"+formArray[1]).append("Formulari fitxer: <input type=\"file\">");
+            $("#contForm_"+formArray[1]).append("<p>Formulari fitxer: <input type=\"file\"></p>");
             break;
     }
 };
