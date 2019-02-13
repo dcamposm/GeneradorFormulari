@@ -1,5 +1,12 @@
 contGlobal = 0;
+contRadio = Array();
+contCheck = Array();
+contSelect = Array();
+contNextR = Array();
+contNextC = Array();
+contNextS = Array();
 $("#boto1").click(generadorFormulari);
+
 function insertInput(){
     var inp = $(this).text();
     //alert($(this).parent());
@@ -9,7 +16,7 @@ function insertInput(){
     //alert(formArray[1]);
     switch (inp){
         case "Text":
-            $("#contForm_"+formArray[1]).append("<p>Formulari text: <input type=\"text\"></p>");
+            $("#contForm_"+formArray[1]).append("<div id=\"text_"+formArray[1]+"\" class=\"inputForm\">Formulari text: <input type=\"text\"></div>");
             break;
         case "Numero":
             $("#contForm_"+formArray[1]).append("<p>Formulari numero: <input type=\"number\"></p>");
@@ -26,8 +33,60 @@ function insertInput(){
         case "File":
             $("#contForm_"+formArray[1]).append("<p>Formulari fitxer: <input type=\"file\"></p>");
             break;
+        case "Radio":
+            if (contRadio[formArray[1]]==1){
+                $("#contForm_"+formArray[1]).append("<div id=\"radio_"+formArray[1]+"\"></div>");                
+            }            
+            $("#radio_"+formArray[1]).append("<input type=\"radio\" name=\"radioOp_"+formArray[1]+"\"> Option "+contRadio[formArray[1]]+"<br>");
+            contRadio[formArray[1]]++;
+            break;
+        case "NewRadio":
+            //alert(contNext[formArray[1]]);
+            $("#radio_"+formArray[1]).attr('id', 'radio_'+formArray[1]+contNextR[formArray[1]]);
+            contNextR[formArray[1]]++;
+            contRadio[formArray[1]]=1;
+            
+            $("#contForm_"+formArray[1]).append("<div id=\"radio_"+formArray[1]+"\"></div>");  
+            $("#radio_"+formArray[1]).append("<input type=\"radio\" name=\"radioOp_"+formArray[1]+"\"> Option "+contRadio[formArray[1]]+"<br>");
+            contRadio[formArray[1]]++;
+            break;
+        case "Checkbox":
+            if (contCheck[formArray[1]]==1){
+                $("#contForm_"+formArray[1]).append("<div id=\"check_"+formArray[1]+"\"></div>");
+            }
+            $("#check_"+formArray[1]).append("<input type=\"checkbox\" name=\"checkOp_"+formArray[1]+"\"> Option "+contCheck[formArray[1]]+"<br>");
+            contCheck[formArray[1]]++;
+            break;
+        case "NewCheckbox":
+            //alert(contNext[formArray[1]]);
+            $("#check_"+formArray[1]).attr('id', 'check_'+formArray[1]+contNextC[formArray[1]]);
+            contNextC[formArray[1]]++;
+            contCheck[formArray[1]]=1;
+            
+            $("#contForm_"+formArray[1]).append("<div id=\"check_"+formArray[1]+"\"></div>");
+            $("#check_"+formArray[1]).append("<input type=\"checkbox\" name=\"checkOp_"+formArray[1]+"\"> Option "+contCheck[formArray[1]]+"<br>");
+            contCheck[formArray[1]]++;
+            break;
+        case "Selected":
+            if (contSelect[formArray[1]]==1){
+                $("#contForm_"+formArray[1]).append("<select id=\"select_"+formArray[1]+"\"></select><br>");
+            }
+            $("#select_"+formArray[1]).append("<option value=\"checkOp_"+formArray[1]+"\">Option"+contSelect[formArray[1]]+"</option>");
+            contSelect[formArray[1]]++;
+            break; 
+        case "NewSelected":
+            //alert(contNext[formArray[1]]);
+            $("#select_"+formArray[1]).attr('id', 'select_'+formArray[1]+contNextS[formArray[1]]);
+            contNextS[formArray[1]]++;
+            contSelect[formArray[1]]=1;
+            
+            $("#contForm_"+formArray[1]).append("<select id=\"select_"+formArray[1]+"\"></select><br>");
+            $("#select_"+formArray[1]).append("<option value=\"checkOp_"+formArray[1]+"\">Option"+contSelect[formArray[1]]+"</option>");
+            contSelect[formArray[1]]++;
+            break;
     }
 };
+
 function generadorFormulari(){
    var nomForm = $('#form').val();
    var container = document.createElement("div");
@@ -48,6 +107,12 @@ function generadorFormulari(){
    $(menu).append("<button id=\"inputPass_"+nomForm+contGlobal+"\">Password</button>");
    $(menu).append("<button id=\"inputDate_"+nomForm+contGlobal+"\">Date</button>");
    $(menu).append("<button id=\"inputFile_"+nomForm+contGlobal+"\">File</button>");
+   $(menu).append("<button id=\"inputRadio_"+nomForm+contGlobal+"\">Radio</button>");
+   $(menu).append("<button id=\"inputNewRadio_"+nomForm+contGlobal+"\">NewRadio</button>");
+   $(menu).append("<button id=\"inputCheckbox_"+nomForm+contGlobal+"\">Checkbox</button>");
+   $(menu).append("<button id=\"inputNewCheckbox_"+nomForm+contGlobal+"\">NewCheckbox</button>");
+   $(menu).append("<button id=\"inputSelected_"+nomForm+contGlobal+"\">Selected</button>");
+   $(menu).append("<button id=\"inputNewSelected_"+nomForm+contGlobal+"\">NewSelected</button>");
    /*---------------------END------------------------*/   
    $(titul).append(nomForm);
    
@@ -63,6 +128,19 @@ function generadorFormulari(){
    $("#inputPass_"+nomForm+contGlobal).click(insertInput);
    $("#inputDate_"+nomForm+contGlobal).click(insertInput);
    $("#inputFile_"+nomForm+contGlobal).click(insertInput);
+   $("#inputRadio_"+nomForm+contGlobal).click(insertInput);
+   $("#inputNewRadio_"+nomForm+contGlobal).click(insertInput);
+   $("#inputCheckbox_"+nomForm+contGlobal).click(insertInput);
+   $("#inputNewCheckbox_"+nomForm+contGlobal).click(insertInput);
+   $("#inputSelected_"+nomForm+contGlobal).click(insertInput);
+   $("#inputNewSelected_"+nomForm+contGlobal).click(insertInput);
+   
+   contRadio[nomForm+contGlobal]=1;
+   contCheck[nomForm+contGlobal]=1;
+   contSelect[nomForm+contGlobal]=1;
+   contNextR[nomForm+contGlobal]=1;
+   contNextC[nomForm+contGlobal]=1;
+   contNextS[nomForm+contGlobal]=1;
    contGlobal++;
 };  
 

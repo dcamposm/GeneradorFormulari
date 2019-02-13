@@ -26,6 +26,6 @@ main {
     background-color: lightblue;
 }
 
-.contForm p {
-    margin-left: 5px;
+.contForm div {
+    margin: 5px;
 }
