@@ -2,6 +2,7 @@ contGlobal = 0;
 contRadio = Array();
 contCheck = Array();
 contSelect = Array();
+contNext = Array();
 contNextR = Array();
 contNextC = Array();
 contNextS = Array();
@@ -13,32 +14,33 @@ function insertInput(){
     var form = $(this).attr("id");
 
     var formArray = form.split("_", 2);
-
-    $("#contForm_"+formArray[1]).append("<div id=\"contInput_"+formArray[1]+"\" class=\"contInput\"></div>");
+    
+    
+    $("#contForm_"+formArray[1]).append("<div id=\"contInput_"+formArray[1]+contNext[formArray[1]]+"\" class=\"contInput\"></div>");
     
     //alert(formArray[1]);
     switch (inp){
         case "Text":
-            $("#contInput_"+formArray[1]).append("Formulari text: <input type=\"text\">");
+            $("#contInput_"+formArray[1]+contNext[formArray[1]]).append("Formulari text: <input type=\"text\">");
             break;
         case "Numero":
-            $("#contForm_"+formArray[1]).append("Formulari numero: <input type=\"number\">");
+            $("#contInput_"+formArray[1]+contNext[formArray[1]]).append("Formulari numero: <input type=\"number\">");
             break;
         case "Mail":
-            $("#contForm_"+formArray[1]).append("Formulari correu: <input type=\"email\" value=\"Formulari correu\">");
+            $("#contInput_"+formArray[1]+contNext[formArray[1]]).append("Formulari correu: <input type=\"email\" value=\"Formulari correu\">");
             break;
         case "Password":
-            $("#contForm_"+formArray[1]).append("Formulari Password: <input type=\"password\">");
+            $("#contInput_"+formArray[1]+contNext[formArray[1]]).append("Formulari Password: <input type=\"password\">");
             break;
         case "Date":
-            $("#contForm_"+formArray[1]).append("Formulari data: <input type=\"date\">");
+            $("#contInput_"+formArray[1]+contNext[formArray[1]]).append("Formulari data: <input type=\"date\">");
             break;
         case "File":
-            $("#contForm_"+formArray[1]).append("Formulari fitxer: <input type=\"file\">");
+            $("#contInput_"+formArray[1]+contNext[formArray[1]]).append("Formulari fitxer: <input type=\"file\">");
             break;
         case "Radio":
             if (contRadio[formArray[1]]==1){
-                $("#contForm_"+formArray[1]).append("<div id=\"radio_"+formArray[1]+"\"></div>");                
+                $("#contInput_"+formArray[1]).append("<div id=\"radio_"+formArray[1]+"\"></div>");                
             }            
             $("#radio_"+formArray[1]).append("<input type=\"radio\" name=\"radioOp_"+formArray[1]+"\"> Option "+contRadio[formArray[1]]+"<br>");
             contRadio[formArray[1]]++;
@@ -49,30 +51,30 @@ function insertInput(){
             contNextR[formArray[1]]++;
             contRadio[formArray[1]]=1;
             
-            $("#contForm_"+formArray[1]).append("<div id=\"radio_"+formArray[1]+"\"></div>");  
+            $("#contInput_"+formArray[1]).append("<div id=\"radio_"+formArray[1]+"\"></div>");  
             $("#radio_"+formArray[1]).append("<input type=\"radio\" name=\"radioOp_"+formArray[1]+"\"> Option "+contRadio[formArray[1]]+"<br>");
             contRadio[formArray[1]]++;
             break;
         case "Checkbox":
             if (contCheck[formArray[1]]==1){
-                $("#contForm_"+formArray[1]).append("<div id=\"check_"+formArray[1]+"\"></div>");
+                $("#contInput_"+formArray[1]).append("<div id=\"check_"+formArray[1]+"\"></div>");
             }
             $("#check_"+formArray[1]).append("<input type=\"checkbox\" name=\"checkOp_"+formArray[1]+"\"> Option "+contCheck[formArray[1]]+"<br>");
             contCheck[formArray[1]]++;
             break;
         case "NewCheckbox":
             //alert(contNext[formArray[1]]);
-            $("#check_"+formArray[1]).attr('id', 'check_'+formArray[1]+contNextC[formArray[1]]);
+            $("#contInput_"+formArray[1]).attr('id', 'check_'+formArray[1]+contNextC[formArray[1]]);
             contNextC[formArray[1]]++;
             contCheck[formArray[1]]=1;
             
-            $("#contForm_"+formArray[1]).append("<div id=\"check_"+formArray[1]+"\"></div>");
+            $("#contInput_"+formArray[1]).append("<div id=\"check_"+formArray[1]+"\"></div>");
             $("#check_"+formArray[1]).append("<input type=\"checkbox\" name=\"checkOp_"+formArray[1]+"\"> Option "+contCheck[formArray[1]]+"<br>");
             contCheck[formArray[1]]++;
             break;
         case "Selected":
             if (contSelect[formArray[1]]==1){
-                $("#contForm_"+formArray[1]).append("<select id=\"select_"+formArray[1]+"\"></select><br>");
+                $("#contInput_"+formArray[1]).append("<select id=\"select_"+formArray[1]+"\"></select><br>");
             }
             $("#select_"+formArray[1]).append("<option value=\"checkOp_"+formArray[1]+"\">Option"+contSelect[formArray[1]]+"</option>");
             contSelect[formArray[1]]++;
@@ -83,14 +85,15 @@ function insertInput(){
             contNextS[formArray[1]]++;
             contSelect[formArray[1]]=1;
             
-            $("#contForm_"+formArray[1]).append("<select id=\"select_"+formArray[1]+"\"></select><br>");
+            $("#contInput_"+formArray[1]).append("<select id=\"select_"+formArray[1]+"\"></select><br>");
             $("#select_"+formArray[1]).append("<option value=\"checkOp_"+formArray[1]+"\">Option"+contSelect[formArray[1]]+"</option>");
             contSelect[formArray[1]]++;
             break;
     }
 
-    $("#contInput_"+formArray[1]).append("<button id=\"text_"+formArray[1]+"\" class=\"buttInput\">X</button>");
-
+    $("#contInput_"+formArray[1]+contNext[formArray[1]]).append("<button id=\"text_"+formArray[1]+contNext[formArray[1]]+"\" class=\"buttInput\">X</button>");
+    
+    contNext[formArray[1]]++;
 };
 
 function generadorFormulari(){
@@ -144,6 +147,7 @@ function generadorFormulari(){
    contRadio[nomForm+contGlobal]=1;
    contCheck[nomForm+contGlobal]=1;
    contSelect[nomForm+contGlobal]=1;
+   contNext[nomForm+contGlobal]=1;
    contNextR[nomForm+contGlobal]=1;
    contNextC[nomForm+contGlobal]=1;
    contNextS[nomForm+contGlobal]=1;
