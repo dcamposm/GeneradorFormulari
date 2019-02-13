@@ -4,29 +4,35 @@ function insertInput(){
     var inp = $(this).text();
     //alert($(this).parent());
     var form = $(this).attr("id");
-    
+
     var formArray = form.split("_", 2);
+
+    $("#contForm_"+formArray[1]).append("<div id=\"contInput_"+formArray[1]+"\" class=\"contInput\"></div>");
+    
     //alert(formArray[1]);
     switch (inp){
         case "Text":
-            $("#contForm_"+formArray[1]).append("<p>Formulari text: <input type=\"text\"></p>");
+            $("#contInput_"+formArray[1]).append("Formulari text: <input type=\"text\">");
             break;
         case "Numero":
-            $("#contForm_"+formArray[1]).append("<p>Formulari numero: <input type=\"number\"></p>");
+            $("#contForm_"+formArray[1]).append("Formulari numero: <input type=\"number\">");
             break;
         case "Mail":
-            $("#contForm_"+formArray[1]).append("<p>Formulari correu: <input type=\"email\" value=\"Formulari correu\"></p>");
+            $("#contForm_"+formArray[1]).append("Formulari correu: <input type=\"email\" value=\"Formulari correu\">");
             break;
         case "Password":
-            $("#contForm_"+formArray[1]).append("<p>Formulari Password: <input type=\"password\"></p>");
+            $("#contForm_"+formArray[1]).append("Formulari Password: <input type=\"password\">");
             break;
         case "Date":
-            $("#contForm_"+formArray[1]).append("<p>Formulari data: <input type=\"date\"></p>");
+            $("#contForm_"+formArray[1]).append("Formulari data: <input type=\"date\">");
             break;
         case "File":
-            $("#contForm_"+formArray[1]).append("<p>Formulari fitxer: <input type=\"file\"></p>");
+            $("#contForm_"+formArray[1]).append("Formulari fitxer: <input type=\"file\">");
             break;
     }
+
+    $("#contInput_"+formArray[1]).append("<button id=\"text_"+formArray[1]+"\" class=\"buttInput\">X</button>");
+
 };
 function generadorFormulari(){
    var nomForm = $('#form').val();
