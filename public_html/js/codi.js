@@ -153,6 +153,7 @@ function generadorFormulari(){
      $(legend).append(nomForm);
      
      $(container).append(legend);
+     $(container).append("<button id=\"inputForm_"+nomForm+contGlobal+"\" class=\"inputForm\">X</button>");
      $(container).append(contForm);
      $(container).append(menu);
      
@@ -170,6 +171,7 @@ function generadorFormulari(){
      $("#inputNewCheckbox_"+nomForm+contGlobal).click(insertInput);
      $("#inputSelected_"+nomForm+contGlobal).click(insertInput);
      $("#inputNewSelected_"+nomForm+contGlobal).click(insertInput);
+     $("#inputForm_"+nomForm+contGlobal).click(deleteInput);
      
      contRadio[nomForm+contGlobal]=1;
      contCheck[nomForm+contGlobal]=1;
