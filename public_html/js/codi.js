@@ -91,13 +91,19 @@ function insertInput(){
             break;
     }
 
-    $("#contInput_"+formArray[1]+contNext[formArray[1]]).append("<button id=\"text_"+formArray[1]+contNext[formArray[1]]+"\" class=\"buttInput\">X</button>");
-    $("#text_"+formArray[1]+contNext[formArray[1]]).click(deleteInput);
+    $("#contInput_"+formArray[1]+contNext[formArray[1]]).append("<button id=\"buttDel_"+formArray[1]+contNext[formArray[1]]+"\" class=\"buttDel\">X</button>");
+    $("#contInput_"+formArray[1]+contNext[formArray[1]]).append("<button id=\"buttMod_"+formArray[1]+contNext[formArray[1]]+"\" class=\"buttMod\">M</button>");
+    $("#buttDel_"+formArray[1]+contNext[formArray[1]]).click(deleteInput);
+    $("#buttMod_"+formArray[1]+contNext[formArray[1]]).click(modifyInput);
     contNext[formArray[1]]++;
 };
 
 function deleteInput(){
   $(this).parent().remove();
+};
+
+function modifyInput(){
+  console.log($(this).prev().attr('class'));
 };
 
 function generadorFormulari(){
