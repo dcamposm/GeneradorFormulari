@@ -121,61 +121,67 @@ function modifyInput(){
 };
 
 function generadorFormulari(){
-   var nomForm = $('#form').val();
-   var container = document.createElement("div");
-   $(container).attr("id", nomForm+contGlobal);
-   $(container).attr("class", "container");
-   var titul = document.createElement("h1");
-   var menu = document.createElement("div");
-   $(menu).attr("class", "menu");
-   var contForm = document.createElement("div");
-   $(contForm).attr("id", "contForm_"+nomForm+contGlobal);
-   $(contForm).attr("class", "contForm");
-   
-   /*---------------------MENU-----------------------*/
-   $(menu).append("<h3>Menu</h3>");
-   $(menu).append("<button id=\"inputText_"+nomForm+contGlobal+"\">Text</button>");
-   $(menu).append("<button id=\"inputNum_"+nomForm+contGlobal+"\">Numero</button>");
-   $(menu).append("<button id=\"inputMail_"+nomForm+contGlobal+"\">Mail</button>");
-   $(menu).append("<button id=\"inputPass_"+nomForm+contGlobal+"\">Password</button>");
-   $(menu).append("<button id=\"inputDate_"+nomForm+contGlobal+"\">Date</button>");
-   $(menu).append("<button id=\"inputFile_"+nomForm+contGlobal+"\">File</button>");
-   $(menu).append("<button id=\"inputRadio_"+nomForm+contGlobal+"\">Radio</button>");
-   $(menu).append("<button id=\"inputNewRadio_"+nomForm+contGlobal+"\">NewRadio</button>");
-   $(menu).append("<button id=\"inputCheckbox_"+nomForm+contGlobal+"\">Checkbox</button>");
-   $(menu).append("<button id=\"inputNewCheckbox_"+nomForm+contGlobal+"\">NewCheckbox</button>");
-   $(menu).append("<button id=\"inputSelected_"+nomForm+contGlobal+"\">Selected</button>");
-   $(menu).append("<button id=\"inputNewSelected_"+nomForm+contGlobal+"\">NewSelected</button>");
-   /*---------------------END------------------------*/   
-   $(titul).append(nomForm);
-   
-   $(container).append(titul);
-   $(container).append(contForm);
-   $(container).append(menu);
-   
-   $('main').append(container);
-   /*--------------------EVENTS-----------------------*/ 
-   $("#inputText_"+nomForm+contGlobal).click(insertInput); 
-   $("#inputNum_"+nomForm+contGlobal).click(insertInput); 
-   $("#inputMail_"+nomForm+contGlobal).click(insertInput); 
-   $("#inputPass_"+nomForm+contGlobal).click(insertInput);
-   $("#inputDate_"+nomForm+contGlobal).click(insertInput);
-   $("#inputFile_"+nomForm+contGlobal).click(insertInput);
-   $("#inputRadio_"+nomForm+contGlobal).click(insertInput);
-   $("#inputNewRadio_"+nomForm+contGlobal).click(insertInput);
-   $("#inputCheckbox_"+nomForm+contGlobal).click(insertInput);
-   $("#inputNewCheckbox_"+nomForm+contGlobal).click(insertInput);
-   $("#inputSelected_"+nomForm+contGlobal).click(insertInput);
-   $("#inputNewSelected_"+nomForm+contGlobal).click(insertInput);
-   
-   contRadio[nomForm+contGlobal]=1;
-   contCheck[nomForm+contGlobal]=1;
-   contSelect[nomForm+contGlobal]=1;
-   contNext[nomForm+contGlobal]=1;
-   contNextR[nomForm+contGlobal]=1;
-   contNextC[nomForm+contGlobal]=1;
-   contNextS[nomForm+contGlobal]=1;
-   contGlobal++;
+  if ($('#form').val() != "") {
+     var nomForm = $('#form').val();
+     var container = document.createElement("fieldset"); //div y borrar legend
+        var legend = document.createElement("legend");
+
+     $(container).attr("id", nomForm+contGlobal);
+     $(container).attr("class", "container");
+     //var titul = document.createElement("h1");
+     var menu = document.createElement("div");
+     $(menu).attr("class", "menu");
+     var contForm = document.createElement("div");
+     $(contForm).attr("id", "contForm_"+nomForm+contGlobal);
+     $(contForm).attr("class", "contForm");
+     
+     /*---------------------MENU-----------------------*/
+     $(menu).append("<h3>Menu</h3>");
+     $(menu).append("<button id=\"inputText_"+nomForm+contGlobal+"\">Text</button>");
+     $(menu).append("<button id=\"inputNum_"+nomForm+contGlobal+"\">Numero</button>");
+     $(menu).append("<button id=\"inputMail_"+nomForm+contGlobal+"\">Mail</button>");
+     $(menu).append("<button id=\"inputPass_"+nomForm+contGlobal+"\">Password</button>");
+     $(menu).append("<button id=\"inputDate_"+nomForm+contGlobal+"\">Date</button>");
+     $(menu).append("<button id=\"inputFile_"+nomForm+contGlobal+"\">File</button>");
+     $(menu).append("<button id=\"inputRadio_"+nomForm+contGlobal+"\">Radio</button>");
+     $(menu).append("<button id=\"inputNewRadio_"+nomForm+contGlobal+"\">NewRadio</button>");
+     $(menu).append("<button id=\"inputCheckbox_"+nomForm+contGlobal+"\">Checkbox</button>");
+     $(menu).append("<button id=\"inputNewCheckbox_"+nomForm+contGlobal+"\">NewCheckbox</button>");
+     $(menu).append("<button id=\"inputSelected_"+nomForm+contGlobal+"\">Selected</button>");
+     $(menu).append("<button id=\"inputNewSelected_"+nomForm+contGlobal+"\">NewSelected</button>");
+     /*---------------------END------------------------*/   
+     $(legend).append(nomForm);
+     
+     $(container).append(legend);
+     $(container).append(contForm);
+     $(container).append(menu);
+     
+     $('main').append(container);
+     /*--------------------EVENTS-----------------------*/ 
+     $("#inputText_"+nomForm+contGlobal).click(insertInput); 
+     $("#inputNum_"+nomForm+contGlobal).click(insertInput); 
+     $("#inputMail_"+nomForm+contGlobal).click(insertInput); 
+     $("#inputPass_"+nomForm+contGlobal).click(insertInput);
+     $("#inputDate_"+nomForm+contGlobal).click(insertInput);
+     $("#inputFile_"+nomForm+contGlobal).click(insertInput);
+     $("#inputRadio_"+nomForm+contGlobal).click(insertInput);
+     $("#inputNewRadio_"+nomForm+contGlobal).click(insertInput);
+     $("#inputCheckbox_"+nomForm+contGlobal).click(insertInput);
+     $("#inputNewCheckbox_"+nomForm+contGlobal).click(insertInput);
+     $("#inputSelected_"+nomForm+contGlobal).click(insertInput);
+     $("#inputNewSelected_"+nomForm+contGlobal).click(insertInput);
+     
+     contRadio[nomForm+contGlobal]=1;
+     contCheck[nomForm+contGlobal]=1;
+     contSelect[nomForm+contGlobal]=1;
+     contNext[nomForm+contGlobal]=1;
+     contNextR[nomForm+contGlobal]=1;
+     contNextC[nomForm+contGlobal]=1;
+     contNextS[nomForm+contGlobal]=1;
+     contGlobal++;
+   } else {
+      alert ("Introdueix un nom de fomulari vàlid!");
+   }
 };  
 
 
