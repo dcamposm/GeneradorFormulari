@@ -12,13 +12,7 @@ main {
     max-width: 380px;
     padding: 5px;
     margin: 10px;
-    background-color: steelblue;
-    display:flex;
-    flex-wrap: wrap;
-}
-
-.container h1{
-  width: 350px;
+    padding-top: 10px;
 }
 
 .menu {
@@ -69,4 +63,8 @@ main {
 .buttMod {
     border-radius: 5px;
     max-height: 20px;
+}
+
+legend {
+    font-weight: bold;
 }
