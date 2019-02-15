@@ -44,9 +44,18 @@ main {
     padding: 5px;
     display: flex;
     justify-content: flex-start;
+    max-width: 370px;
 }
 
 .radioInput {
+    margin-right: 220px;
+}
+
+.checkInput {
+    margin-right: 220px;
+}
+
+.selectInput {
     margin-right: 240px;
 }
 
