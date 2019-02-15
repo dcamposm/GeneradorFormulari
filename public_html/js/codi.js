@@ -15,66 +15,73 @@ function insertInput(){
 
     var formArray = form.split("_", 2);
     
-    
-    $("#contForm_"+formArray[1]).append("<div id=\"contInput_"+formArray[1]+contNext[formArray[1]]+"\" class=\"contInput\"></div>");
-    
     //alert(formArray[1]);
     switch (inp){
         case "Text":
+            $("#contForm_"+formArray[1]).append("<div id=\"contInput_"+formArray[1]+contNext[formArray[1]]+"\" class=\"contInput\"></div>"); 
             $("#contInput_"+formArray[1]+contNext[formArray[1]]).append("Formulari text: <input type=\"text\">");
             break;
         case "Numero":
+            $("#contForm_"+formArray[1]).append("<div id=\"contInput_"+formArray[1]+contNext[formArray[1]]+"\" class=\"contInput\"></div>"); 
             $("#contInput_"+formArray[1]+contNext[formArray[1]]).append("Formulari numero: <input type=\"number\">");
             break;
         case "Mail":
+            $("#contForm_"+formArray[1]).append("<div id=\"contInput_"+formArray[1]+contNext[formArray[1]]+"\" class=\"contInput\"></div>"); 
             $("#contInput_"+formArray[1]+contNext[formArray[1]]).append("Formulari correu: <input type=\"email\" value=\"Formulari correu\">");
             break;
         case "Password":
+            $("#contForm_"+formArray[1]).append("<div id=\"contInput_"+formArray[1]+contNext[formArray[1]]+"\" class=\"contInput\"></div>"); 
             $("#contInput_"+formArray[1]+contNext[formArray[1]]).append("Formulari Password: <input type=\"password\">");
             break;
         case "Date":
+            $("#contForm_"+formArray[1]).append("<div id=\"contInput_"+formArray[1]+contNext[formArray[1]]+"\" class=\"contInput\"></div>"); 
             $("#contInput_"+formArray[1]+contNext[formArray[1]]).append("Formulari data: <input type=\"date\">");
             break;
         case "File":
+            $("#contForm_"+formArray[1]).append("<div id=\"contInput_"+formArray[1]+contNext[formArray[1]]+"\" class=\"contInput\"></div>"); 
             $("#contInput_"+formArray[1]+contNext[formArray[1]]).append("Formulari fitxer: <input type=\"file\">");
             break;
         case "Radio":
             if (contRadio[formArray[1]]==1){
-                $("#contInput_"+formArray[1]).append("<div id=\"radio_"+formArray[1]+"\"></div>");                
+                $("#contForm_"+formArray[1]).append("<div id=\"contInput_"+formArray[1]+contNext[formArray[1]]+"\" class=\"contInput\"></div>"); 
+                $("#contInput_"+formArray[1]+contNext[formArray[1]]).append("<div id=\"radio_"+formArray[1]+"\" class=\"radioInput\"></div>");                
             }            
             $("#radio_"+formArray[1]).append("<input type=\"radio\" name=\"radioOp_"+formArray[1]+"\"> Option "+contRadio[formArray[1]]+"<br>");
             contRadio[formArray[1]]++;
             break;
         case "NewRadio":
-            //alert(contNext[formArray[1]]);
             $("#radio_"+formArray[1]).attr('id', 'radio_'+formArray[1]+contNextR[formArray[1]]);
             contNextR[formArray[1]]++;
             contRadio[formArray[1]]=1;
             
-            $("#contInput_"+formArray[1]).append("<div id=\"radio_"+formArray[1]+"\"></div>");  
+            $("#contForm_"+formArray[1]).append("<div id=\"contInput_"+formArray[1]+contNext[formArray[1]]+"\" class=\"contInput\"></div>"); 
+            $("#contInput_"+formArray[1]+contNext[formArray[1]]).append("<div id=\"radio_"+formArray[1]+"\"></div>");  
             $("#radio_"+formArray[1]).append("<input type=\"radio\" name=\"radioOp_"+formArray[1]+"\"> Option "+contRadio[formArray[1]]+"<br>");
             contRadio[formArray[1]]++;
             break;
         case "Checkbox":
             if (contCheck[formArray[1]]==1){
-                $("#contInput_"+formArray[1]).append("<div id=\"check_"+formArray[1]+"\"></div>");
+                $("#contForm_"+formArray[1]).append("<div id=\"contInput_"+formArray[1]+contNext[formArray[1]]+"\" class=\"contInput\"></div>"); 
+                $("#contInput_"+formArray[1]+contNext[formArray[1]]).append("<div id=\"check_"+formArray[1]+"\"></div>");
             }
             $("#check_"+formArray[1]).append("<input type=\"checkbox\" name=\"checkOp_"+formArray[1]+"\"> Option "+contCheck[formArray[1]]+"<br>");
             contCheck[formArray[1]]++;
             break;
         case "NewCheckbox":
             //alert(contNext[formArray[1]]);
-            $("#contInput_"+formArray[1]).attr('id', 'check_'+formArray[1]+contNextC[formArray[1]]);
+            $("#check_"+formArray[1]).attr('id', 'check_'+formArray[1]+contNextC[formArray[1]]);
             contNextC[formArray[1]]++;
             contCheck[formArray[1]]=1;
             
-            $("#contInput_"+formArray[1]).append("<div id=\"check_"+formArray[1]+"\"></div>");
+            $("#contForm_"+formArray[1]).append("<div id=\"contInput_"+formArray[1]+contNext[formArray[1]]+"\" class=\"contInput\"></div>"); 
+            $("#contInput_"+formArray[1]+contNext[formArray[1]]).append("<div id=\"check_"+formArray[1]+"\"></div>");
             $("#check_"+formArray[1]).append("<input type=\"checkbox\" name=\"checkOp_"+formArray[1]+"\"> Option "+contCheck[formArray[1]]+"<br>");
             contCheck[formArray[1]]++;
             break;
         case "Selected":
             if (contSelect[formArray[1]]==1){
-                $("#contInput_"+formArray[1]).append("<select id=\"select_"+formArray[1]+"\"></select><br>");
+                $("#contForm_"+formArray[1]).append("<div id=\"contInput_"+formArray[1]+contNext[formArray[1]]+"\" class=\"contInput\"></div>"); 
+                $("#contInput_"+formArray[1]+contNext[formArray[1]]).append("<select id=\"select_"+formArray[1]+"\"></select><br>");
             }
             $("#select_"+formArray[1]).append("<option value=\"checkOp_"+formArray[1]+"\">Option"+contSelect[formArray[1]]+"</option>");
             contSelect[formArray[1]]++;
@@ -85,7 +92,8 @@ function insertInput(){
             contNextS[formArray[1]]++;
             contSelect[formArray[1]]=1;
             
-            $("#contInput_"+formArray[1]).append("<select id=\"select_"+formArray[1]+"\"></select><br>");
+            $("#contForm_"+formArray[1]).append("<div id=\"contInput_"+formArray[1]+contNext[formArray[1]]+"\" class=\"contInput\"></div>"); 
+            $("#contInput_"+formArray[1]+contNext[formArray[1]]).append("<select id=\"select_"+formArray[1]+"\"></select><br>");
             $("#select_"+formArray[1]).append("<option value=\"checkOp_"+formArray[1]+"\">Option"+contSelect[formArray[1]]+"</option>");
             contSelect[formArray[1]]++;
             break;
@@ -99,7 +107,7 @@ function insertInput(){
 };
 
 function deleteInput(){
-  $(this).parent().remove();
+    $(this).parent().remove();
 };
 
 function modifyInput(){
