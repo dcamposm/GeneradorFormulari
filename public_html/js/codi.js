@@ -100,8 +100,12 @@ function insertInput(){
     }
 
     $("#contInput_"+formArray[1]+contNext[formArray[1]]).append("<button id=\"text_"+formArray[1]+contNext[formArray[1]]+"\" class=\"buttInput\">X</button>");
-    
+    $("#text_"+formArray[1]+contNext[formArray[1]]).click(deleteInput);
     contNext[formArray[1]]++;
+};
+
+function deleteInput(){
+  $(this).parent().remove();
 };
 
 function generadorFormulari(){
