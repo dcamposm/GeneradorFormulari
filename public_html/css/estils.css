@@ -43,13 +43,21 @@ main {
     margin-bottom: 10px;
     padding: 5px;
     display: flex;
+    justify-content: flex-start;
 }
 
 .radioInput {
     margin-right: 240px;
 }
 
-.buttInput {
+.buttDel {
+    border-radius: 5px;
+    max-height: 20px;
+    background-color: red;
+    border-color: red;
+}
+
+.buttMod {
     border-radius: 5px;
     max-height: 20px;
 }
