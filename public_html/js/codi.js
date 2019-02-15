@@ -44,7 +44,7 @@ function insertInput(){
         case "Radio":
             if (contRadio[formArray[1]]==1){
                 $("#contForm_"+formArray[1]).append("<div id=\"contInput_"+formArray[1]+contNext[formArray[1]]+"\" class=\"contInput\"></div>"); 
-                $("#contInput_"+formArray[1]+contNext[formArray[1]]).append("<div id=\"radio_"+formArray[1]+"\"></div>");                
+                $("#contInput_"+formArray[1]+contNext[formArray[1]]).append("<div id=\"radio_"+formArray[1]+"\" class=\"radioInput\"></div>");                
             }            
             $("#radio_"+formArray[1]).append("<input type=\"radio\" name=\"radioOp_"+formArray[1]+"\"> Option "+contRadio[formArray[1]]+"<br>");
             contRadio[formArray[1]]++;
@@ -105,7 +105,7 @@ function insertInput(){
 };
 
 function deleteInput(){
-  $(this).parent().remove();
+    $(this).parent().remove();
 };
 
 function generadorFormulari(){

@@ -33,6 +33,10 @@ main {
     display: flex;
 }
 
+.radioInput {
+    margin-right: 240px;
+}
+
 .buttInput {
     border-radius: 5px;
     max-height: 20px;
