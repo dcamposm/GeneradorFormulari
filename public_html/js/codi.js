@@ -19,27 +19,27 @@ function insertInput(){
     switch (inp){
         case "Text":
             $("#contForm_"+formArray[1]).append("<div id=\"contInput_"+formArray[1]+contNext[formArray[1]]+"\" class=\"contInput\"></div>"); 
-            $("#contInput_"+formArray[1]+contNext[formArray[1]]).append("Formulari text: <input type=\"text\">");
+            $("#contInput_"+formArray[1]+contNext[formArray[1]]).append("<div class=\"textFrom\">Formulari text:</div><input type=\"text\">");
             break;
         case "Numero":
             $("#contForm_"+formArray[1]).append("<div id=\"contInput_"+formArray[1]+contNext[formArray[1]]+"\" class=\"contInput\"></div>"); 
-            $("#contInput_"+formArray[1]+contNext[formArray[1]]).append("Formulari número: <input type=\"number\">");
+            $("#contInput_"+formArray[1]+contNext[formArray[1]]).append("<div class=\"textFrom\">Formulari numero:</div><input type=\"number\">");
             break;
         case "Mail":
             $("#contForm_"+formArray[1]).append("<div id=\"contInput_"+formArray[1]+contNext[formArray[1]]+"\" class=\"contInput\"></div>"); 
-            $("#contInput_"+formArray[1]+contNext[formArray[1]]).append("Formulari correu: <input type=\"email\" value=\"Formulari correu\">");
+            $("#contInput_"+formArray[1]+contNext[formArray[1]]).append("<div class=\"textFrom\">Formulari correu:</div><input type=\"email\" value=\"Formulari correu\">");
             break;
         case "Password":
             $("#contForm_"+formArray[1]).append("<div id=\"contInput_"+formArray[1]+contNext[formArray[1]]+"\" class=\"contInput\"></div>"); 
-            $("#contInput_"+formArray[1]+contNext[formArray[1]]).append("Formulari Password: <input type=\"password\">");
+            $("#contInput_"+formArray[1]+contNext[formArray[1]]).append("<div class=\"textFrom\">Formulari Password:</div><input type=\"password\">");
             break;
         case "Date":
             $("#contForm_"+formArray[1]).append("<div id=\"contInput_"+formArray[1]+contNext[formArray[1]]+"\" class=\"contInput\"></div>"); 
-            $("#contInput_"+formArray[1]+contNext[formArray[1]]).append("Formulari data: <input type=\"date\">");
+            $("#contInput_"+formArray[1]+contNext[formArray[1]]).append("<div class=\"textFrom\">Formulari data:</div><input type=\"date\">");
             break;
         case "File":
             $("#contForm_"+formArray[1]).append("<div id=\"contInput_"+formArray[1]+contNext[formArray[1]]+"\" class=\"contInput\"></div>"); 
-            $("#contInput_"+formArray[1]+contNext[formArray[1]]).append("Formulari fitxer: <input type=\"file\">");
+            $("#contInput_"+formArray[1]+contNext[formArray[1]]).append("<div class=\"textFrom\">Formulari fitxer:</div><input type=\"file\">");
             break;
         case "Radio":
             if (contRadio[formArray[1]]==1){
@@ -98,16 +98,21 @@ function insertInput(){
             contSelect[formArray[1]]++;
             break;
     }
+    
+    var butons = document.createElement("div");
+    $(butons).attr("class", "butons");
+    $(butons).append("<button id=\"buttMod_"+formArray[1]+contNext[formArray[1]]+"\" class=\"buttMod\">M</button>");
+    $(butons).append("<button id=\"buttDel_"+formArray[1]+contNext[formArray[1]]+"\" class=\"buttDel\">X</button>");
+    $("#contInput_"+formArray[1]+contNext[formArray[1]]).append(butons);
 
-    $("#contInput_"+formArray[1]+contNext[formArray[1]]).append("<button id=\"buttMod_"+formArray[1]+contNext[formArray[1]]+"\" class=\"buttMod\">M</button>");
-    $("#contInput_"+formArray[1]+contNext[formArray[1]]).append("<button id=\"buttDel_"+formArray[1]+contNext[formArray[1]]+"\" class=\"buttDel\">X</button>");
+    
     $("#buttDel_"+formArray[1]+contNext[formArray[1]]).click(deleteInput);
     $("#buttMod_"+formArray[1]+contNext[formArray[1]]).click(modifyInput);
     contNext[formArray[1]]++;
 };
 
 function deleteInput(){
-    $(this).parent().remove();
+    $(this).parent().parent().parent().remove();
 };
 
 function modifyInput(){
@@ -117,7 +122,7 @@ function modifyInput(){
             $(this).prev().attr('size', inputLength);
             $(this).prev().attr('maxlength', inputLength);
         break;
-        case "number": 
+        case "number":
             $(this).prev().attr('name', 'quantity');
             var inputMin = parseInt(prompt("Indica el número mínim:"));
             $(this).prev().attr('min', inputMin);
@@ -129,9 +134,9 @@ function modifyInput(){
 
 function generadorFormulari(){
   if ($('#form').val() != "") {
-     var nomForm = $('#form').val();
+     var nomForm = $('#form').val().split(" ").join("-");
      var container = document.createElement("fieldset"); //div y borrar legend
-        var legend = document.createElement("legend");
+     var legend = document.createElement("legend");
 
      $(container).attr("id", nomForm+contGlobal);
      $(container).attr("class", "container");
@@ -143,7 +148,8 @@ function generadorFormulari(){
      $(contForm).attr("class", "contForm");
      
      /*---------------------MENU-----------------------*/
-     $(menu).append("<h3>Menu</h3>");
+     $(menu).append("<h3>Menu<button id=\"inputForm_"+nomForm+contGlobal+"\" class=\"inputForm\">X</button></h3>");
+     //$(menu).append("");
      $(menu).append("<button id=\"inputText_"+nomForm+contGlobal+"\">Text</button>");
      $(menu).append("<button id=\"inputNum_"+nomForm+contGlobal+"\">Numero</button>");
      $(menu).append("<button id=\"inputMail_"+nomForm+contGlobal+"\">Mail</button>");
@@ -157,12 +163,12 @@ function generadorFormulari(){
      $(menu).append("<button id=\"inputSelected_"+nomForm+contGlobal+"\">Selected</button>");
      $(menu).append("<button id=\"inputNewSelected_"+nomForm+contGlobal+"\">NewSelected</button>");
      /*---------------------END------------------------*/   
-     $(legend).append(nomForm);
+     $(legend).append(nomForm.split("-").join(" "));
      
      $(container).append(legend);
-     $(container).append("<button id=\"inputForm_"+nomForm+contGlobal+"\" class=\"inputForm\">X</button>");
-     $(container).append(contForm);
      $(container).append(menu);
+     $(container).append(contForm);
+     
      
      $('main').append(container);
      /*--------------------EVENTS-----------------------*/ 
