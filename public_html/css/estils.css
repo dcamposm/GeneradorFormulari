@@ -1,10 +1,12 @@
-    @import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
 
 main {
     max-width: 100%;
     flex-wrap: wrap;
     display: flex;
     font-family: "Montserrat";
+    align-items: flex-start;
+    justify-content: center;
 }
 
 .contForm {
@@ -36,6 +38,7 @@ main {
 
 .menu button {
     margin: 2px;
+    border-radius: 5px;
 }
 
 .inputForm {

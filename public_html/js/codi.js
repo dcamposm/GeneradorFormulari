@@ -14,16 +14,23 @@ function insertInput(){
     var form = $(this).attr("id");
 
     var formArray = form.split("_", 2);
-    
+    var butons = document.createElement("div");
+    $(butons).attr("class", "butons");
     //alert(formArray[1]);
     switch (inp){
         case "Text":
             $("#contForm_"+formArray[1]).append("<div id=\"contInput_"+formArray[1]+contNext[formArray[1]]+"\" class=\"contInput\"></div>"); 
             $("#contInput_"+formArray[1]+contNext[formArray[1]]).append("<div class=\"textFrom\">Formulari text:</div><input type=\"text\">");
+            $(butons).append("<button id=\"buttMod_"+formArray[1]+contNext[formArray[1]]+"\" class=\"buttMod\">M</button>");
+            $(butons).append("<button id=\"buttDel_"+formArray[1]+contNext[formArray[1]]+"\" class=\"buttDel\">X</button>");
+            $("#contInput_"+formArray[1]+contNext[formArray[1]]).append(butons);
             break;
         case "Numero":
             $("#contForm_"+formArray[1]).append("<div id=\"contInput_"+formArray[1]+contNext[formArray[1]]+"\" class=\"contInput\"></div>"); 
             $("#contInput_"+formArray[1]+contNext[formArray[1]]).append("<div class=\"textFrom\">Formulari numero:</div><input type=\"number\">");
+            $(butons).append("<button id=\"buttMod_"+formArray[1]+contNext[formArray[1]]+"\" class=\"buttMod\">M</button>");
+            $(butons).append("<button id=\"buttDel_"+formArray[1]+contNext[formArray[1]]+"\" class=\"buttDel\">X</button>");
+            $("#contInput_"+formArray[1]+contNext[formArray[1]]).append(butons);
             break;
         case "Mail":
             $("#contForm_"+formArray[1]).append("<div id=\"contInput_"+formArray[1]+contNext[formArray[1]]+"\" class=\"contInput\"></div>"); 
@@ -32,6 +39,9 @@ function insertInput(){
         case "Password":
             $("#contForm_"+formArray[1]).append("<div id=\"contInput_"+formArray[1]+contNext[formArray[1]]+"\" class=\"contInput\"></div>"); 
             $("#contInput_"+formArray[1]+contNext[formArray[1]]).append("<div class=\"textFrom\">Formulari Password:</div><input type=\"password\">");
+            $(butons).append("<button id=\"buttMod_"+formArray[1]+contNext[formArray[1]]+"\" class=\"buttMod\">M</button>");
+            $(butons).append("<button id=\"buttDel_"+formArray[1]+contNext[formArray[1]]+"\" class=\"buttDel\">X</button>");
+            $("#contInput_"+formArray[1]+contNext[formArray[1]]).append(butons);
             break;
         case "Date":
             $("#contForm_"+formArray[1]).append("<div id=\"contInput_"+formArray[1]+contNext[formArray[1]]+"\" class=\"contInput\"></div>"); 
@@ -99,14 +109,7 @@ function insertInput(){
             break;
     }
     
-    var butons = document.createElement("div");
-    $(butons).attr("class", "butons");
-    $(butons).append("<button id=\"buttMod_"+formArray[1]+contNext[formArray[1]]+"\" class=\"buttMod\">M</button>");
-    $(butons).append("<button id=\"buttDel_"+formArray[1]+contNext[formArray[1]]+"\" class=\"buttDel\">X</button>");
-    $("#contInput_"+formArray[1]+contNext[formArray[1]]).append(butons);
-
-    
-    $("#buttDel_"+formArray[1]+contNext[formArray[1]]).click(deleteInput);
+    $("#buttDel_"+formArray[1]+contNext[formArray[1]]).click(deleteInput2);
     $("#buttMod_"+formArray[1]+contNext[formArray[1]]).click(modifyInput);
     contNext[formArray[1]]++;
 };
@@ -115,19 +118,23 @@ function deleteInput(){
     $(this).parent().parent().parent().remove();
 };
 
+function deleteInput2(){
+    $(this).parent().parent().remove();
+};
+
 function modifyInput(){
-    switch ($(this).prev().attr('type')) {
+    switch ($(this).parent().prev().attr('type')) {
         case "text": 
             var inputLength = parseInt(prompt("Indica la longitud del Input:"));
-            $(this).prev().attr('size', inputLength);
-            $(this).prev().attr('maxlength', inputLength);
+            $(this).parent().prev().attr('size', inputLength);
+            $(this).parent().prev().attr('maxlength', inputLength);
         break;
         case "number":
-            $(this).prev().attr('name', 'quantity');
+            $(this).parent().prev().attr('name', 'quantity');
             var inputMin = parseInt(prompt("Indica el número mínim:"));
-            $(this).prev().attr('min', inputMin);
+            $(this).parent().prev().attr('min', inputMin);
             var inputMax = parseInt(prompt("Indica el número màxim:"));
-            $(this).prev().attr('max', inputMax);
+            $(this).parent().prev().attr('max', inputMax);
         break;
     }
 };
@@ -150,7 +157,7 @@ function generadorFormulari(){
      /*---------------------MENU-----------------------*/
      $(menu).append("<h3>Menu<button id=\"inputForm_"+nomForm+contGlobal+"\" class=\"inputForm\">X</button></h3>");
      //$(menu).append("");
-     $(menu).append("<button id=\"inputText_"+nomForm+contGlobal+"\">Text</button>");
+     $(menu).append("<button class=\"w3-button w3-tiny  w3-white w3-border w3-border-blue w3-round-xlarge\" id=\"inputText_"+nomForm+contGlobal+"\">Text</button>");
      $(menu).append("<button id=\"inputNum_"+nomForm+contGlobal+"\">Numero</button>");
      $(menu).append("<button id=\"inputMail_"+nomForm+contGlobal+"\">Mail</button>");
      $(menu).append("<button id=\"inputPass_"+nomForm+contGlobal+"\">Password</button>");
