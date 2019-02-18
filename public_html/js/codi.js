@@ -112,18 +112,18 @@ function deleteInput(){
 
 function modifyInput(){
     switch ($(this).prev().attr('type')) {
-        case "text": {
+        case "text": 
             var inputLength = parseInt(prompt("Indica la longitud del Input:"));
             $(this).prev().attr('size', inputLength);
             $(this).prev().attr('maxlength', inputLength);
-        } break;
-        case "number": {
+        break;
+        case "number": 
             $(this).prev().attr('name', 'quantity');
             var inputMin = parseInt(prompt("Indica el número mínim:"));
             $(this).prev().attr('min', inputMin);
             var inputMax = parseInt(prompt("Indica el número màxim:"));
             $(this).prev().attr('max', inputMax);
-        } break;
+        break;
     }
 };
 
