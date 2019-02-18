@@ -21,12 +21,13 @@ function insertInput(){
         case "Text":
             $("#contForm_"+formArray[1]).append("<div id=\"contInput_"+formArray[1]+contNext[formArray[1]]+"\" class=\"contInput\"></div>"); 
             $("#contInput_"+formArray[1]+contNext[formArray[1]]).append("<div class=\"textFrom\">Formulari text:</div><input type=\"text\">");
-            $(butons).append("<button id=\"buttMod_"+formArray[1]+contNext[formArray[1]]+"\" class=\"buttMod\">M</button>");
+            $(butons).append("<button id=\"buttMod_"+formArray[1]+contNext[formArray[1]]+"\" class=\"buttMod\">Longitud</button>");
             break;
         case "Numero":
             $("#contForm_"+formArray[1]).append("<div id=\"contInput_"+formArray[1]+contNext[formArray[1]]+"\" class=\"contInput\"></div>"); 
             $("#contInput_"+formArray[1]+contNext[formArray[1]]).append("<div class=\"textFrom\">Formulari numero:</div><input type=\"number\">");
-            $(butons).append("<button id=\"buttMod_"+formArray[1]+contNext[formArray[1]]+"\" class=\"buttMod\">M</button>");
+            $(butons).append("<button id=\"buttMin_"+formArray[1]+contNext[formArray[1]]+"\" class=\"buttMod\">Min</button>");
+            $(butons).append("<button id=\"buttMax_"+formArray[1]+contNext[formArray[1]]+"\" class=\"buttMod\">Max</button>");
             break;
         case "Mail":
             $("#contForm_"+formArray[1]).append("<div id=\"contInput_"+formArray[1]+contNext[formArray[1]]+"\" class=\"contInput\"></div>"); 
@@ -108,6 +109,8 @@ function insertInput(){
     
     $("#buttDel_"+formArray[1]+contNext[formArray[1]]).click(deleteInput2);
     $("#buttMod_"+formArray[1]+contNext[formArray[1]]).click(modifyInput);
+    $("#buttMin_"+formArray[1]+contNext[formArray[1]]).click(modifyInput);
+    $("#buttMax_"+formArray[1]+contNext[formArray[1]]).click(modifyInput);
     contNext[formArray[1]]++;
 };
 
@@ -128,10 +131,14 @@ function modifyInput(){
         break;
         case "number":
             $(this).parent().prev().attr('name', 'quantity');
+            if ($(this).attr("id").startsWith('buttMin')) {
             var inputMin = parseInt(prompt("Indica el número mínim:"));
             $(this).parent().prev().attr('min', inputMin);
+            }
+            if ($(this).attr("id").startsWith('buttMax')) {
             var inputMax = parseInt(prompt("Indica el número màxim:"));
             $(this).parent().prev().attr('max', inputMax);
+            }
         break;
     }
 };
