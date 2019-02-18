@@ -99,8 +99,12 @@ function insertInput(){
             break;
     }
     
-    $("#contInput_"+formArray[1]+contNext[formArray[1]]).append("<button id=\"buttMod_"+formArray[1]+contNext[formArray[1]]+"\" class=\"buttMod\">M</button>");
-    $("#contInput_"+formArray[1]+contNext[formArray[1]]).append("<button id=\"buttDel_"+formArray[1]+contNext[formArray[1]]+"\" class=\"buttDel\">X</button>");
+    var butons = document.createElement("div");
+    $(butons).attr("class", "butons");
+    $(butons).append("<button id=\"buttMod_"+formArray[1]+contNext[formArray[1]]+"\" class=\"buttMod\">M</button>");
+    $(butons).append("<button id=\"buttDel_"+formArray[1]+contNext[formArray[1]]+"\" class=\"buttDel\">X</button>");
+    $("#contInput_"+formArray[1]+contNext[formArray[1]]).append(butons);
+
     
     $("#buttDel_"+formArray[1]+contNext[formArray[1]]).click(deleteInput);
     $("#buttMod_"+formArray[1]+contNext[formArray[1]]).click(modifyInput);
@@ -108,7 +112,7 @@ function insertInput(){
 };
 
 function deleteInput(){
-    $(this).parent().remove();
+    $(this).parent().parent().parent().remove();
 };
 
 function modifyInput(){
@@ -117,14 +121,14 @@ function modifyInput(){
             var inputLength = parseInt(prompt("Indica la longitud del Input:"));
             $(this).prev().attr('size', inputLength);
             $(this).prev().attr('maxlength', inputLength);
-        } break;
-        case "number": {
+        break;
+        case "number":
             $(this).prev().attr('name', 'quantity');
             var inputMin = parseInt(prompt("Indica el número mínim:"));
             $(this).prev().attr('min', inputMin);
             var inputMax = parseInt(prompt("Indica el número màxim:"));
             $(this).prev().attr('max', inputMax);
-        } break;
+        break;
     }
 };
 
@@ -132,7 +136,7 @@ function generadorFormulari(){
   if ($('#form').val() != "") {
      var nomForm = $('#form').val().split(" ").join("-");
      var container = document.createElement("fieldset"); //div y borrar legend
-        var legend = document.createElement("legend");
+     var legend = document.createElement("legend");
 
      $(container).attr("id", nomForm+contGlobal);
      $(container).attr("class", "container");
@@ -144,7 +148,8 @@ function generadorFormulari(){
      $(contForm).attr("class", "contForm");
      
      /*---------------------MENU-----------------------*/
-     $(menu).append("<h3>Menu</h3>");
+     $(menu).append("<h3>Menu<button id=\"inputForm_"+nomForm+contGlobal+"\" class=\"inputForm\">X</button></h3>");
+     //$(menu).append("");
      $(menu).append("<button id=\"inputText_"+nomForm+contGlobal+"\">Text</button>");
      $(menu).append("<button id=\"inputNum_"+nomForm+contGlobal+"\">Numero</button>");
      $(menu).append("<button id=\"inputMail_"+nomForm+contGlobal+"\">Mail</button>");
@@ -161,9 +166,9 @@ function generadorFormulari(){
      $(legend).append(nomForm.split("-").join(" "));
      
      $(container).append(legend);
-     $(container).append("<button id=\"inputForm_"+nomForm+contGlobal+"\" class=\"inputForm\">X</button>");
-     $(container).append(contForm);
      $(container).append(menu);
+     $(container).append(contForm);
+     
      
      $('main').append(container);
      /*--------------------EVENTS-----------------------*/ 
