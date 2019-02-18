@@ -22,15 +22,11 @@ function insertInput(){
             $("#contForm_"+formArray[1]).append("<div id=\"contInput_"+formArray[1]+contNext[formArray[1]]+"\" class=\"contInput\"></div>"); 
             $("#contInput_"+formArray[1]+contNext[formArray[1]]).append("<div class=\"textFrom\">Formulari text:</div><input type=\"text\">");
             $(butons).append("<button id=\"buttMod_"+formArray[1]+contNext[formArray[1]]+"\" class=\"buttMod\">M</button>");
-            $(butons).append("<button id=\"buttDel_"+formArray[1]+contNext[formArray[1]]+"\" class=\"buttDel\">X</button>");
-            $("#contInput_"+formArray[1]+contNext[formArray[1]]).append(butons);
             break;
         case "Numero":
             $("#contForm_"+formArray[1]).append("<div id=\"contInput_"+formArray[1]+contNext[formArray[1]]+"\" class=\"contInput\"></div>"); 
             $("#contInput_"+formArray[1]+contNext[formArray[1]]).append("<div class=\"textFrom\">Formulari numero:</div><input type=\"number\">");
             $(butons).append("<button id=\"buttMod_"+formArray[1]+contNext[formArray[1]]+"\" class=\"buttMod\">M</button>");
-            $(butons).append("<button id=\"buttDel_"+formArray[1]+contNext[formArray[1]]+"\" class=\"buttDel\">X</button>");
-            $("#contInput_"+formArray[1]+contNext[formArray[1]]).append(butons);
             break;
         case "Mail":
             $("#contForm_"+formArray[1]).append("<div id=\"contInput_"+formArray[1]+contNext[formArray[1]]+"\" class=\"contInput\"></div>"); 
@@ -40,8 +36,6 @@ function insertInput(){
             $("#contForm_"+formArray[1]).append("<div id=\"contInput_"+formArray[1]+contNext[formArray[1]]+"\" class=\"contInput\"></div>"); 
             $("#contInput_"+formArray[1]+contNext[formArray[1]]).append("<div class=\"textFrom\">Formulari Password:</div><input type=\"password\">");
             $(butons).append("<button id=\"buttMod_"+formArray[1]+contNext[formArray[1]]+"\" class=\"buttMod\">M</button>");
-            $(butons).append("<button id=\"buttDel_"+formArray[1]+contNext[formArray[1]]+"\" class=\"buttDel\">X</button>");
-            $("#contInput_"+formArray[1]+contNext[formArray[1]]).append(butons);
             break;
         case "Date":
             $("#contForm_"+formArray[1]).append("<div id=\"contInput_"+formArray[1]+contNext[formArray[1]]+"\" class=\"contInput\"></div>"); 
@@ -108,6 +102,9 @@ function insertInput(){
             contSelect[formArray[1]]++;
             break;
     }
+    
+    $(butons).append("<button id=\"buttDel_"+formArray[1]+contNext[formArray[1]]+"\" class=\"buttDel\">X</button>");
+    $("#contInput_"+formArray[1]+contNext[formArray[1]]).append(butons);
     
     $("#buttDel_"+formArray[1]+contNext[formArray[1]]).click(deleteInput2);
     $("#buttMod_"+formArray[1]+contNext[formArray[1]]).click(modifyInput);
