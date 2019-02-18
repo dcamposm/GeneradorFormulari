@@ -23,7 +23,7 @@ function insertInput(){
             break;
         case "Numero":
             $("#contForm_"+formArray[1]).append("<div id=\"contInput_"+formArray[1]+contNext[formArray[1]]+"\" class=\"contInput\"></div>"); 
-            $("#contInput_"+formArray[1]+contNext[formArray[1]]).append("Formulari numero: <input type=\"number\">");
+            $("#contInput_"+formArray[1]+contNext[formArray[1]]).append("Formulari número: <input type=\"number\">");
             break;
         case "Mail":
             $("#contForm_"+formArray[1]).append("<div id=\"contInput_"+formArray[1]+contNext[formArray[1]]+"\" class=\"contInput\"></div>"); 
@@ -116,6 +116,13 @@ function modifyInput(){
             var inputLength = parseInt(prompt("Indica la longitud del Input:"));
             $(this).prev().attr('size', inputLength);
             $(this).prev().attr('maxlength', inputLength);
+        } break;
+        case "number": {
+            $(this).prev().attr('name', 'quantity');
+            var inputMin = parseInt(prompt("Indica el número mínim:"));
+            $(this).prev().attr('min', inputMin);
+            var inputMax = parseInt(prompt("Indica el número màxim:"));
+            $(this).prev().attr('max', inputMax);
         } break;
     }
 };
