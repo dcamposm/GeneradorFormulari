@@ -20,31 +20,33 @@ function insertInput(){
     switch (inp){
         case "Text":
             $("#contForm_"+formArray[1]).append("<div id=\"contInput_"+formArray[1]+contNext[formArray[1]]+"\" class=\"contInput\"></div>"); 
-            $("#contInput_"+formArray[1]+contNext[formArray[1]]).append("<div class=\"textFrom\">Formulari text:</div><input type=\"text\">");
+            $("#contInput_"+formArray[1]+contNext[formArray[1]]).append("<input id=\"textForm_"+formArray[1]+contNext[formArray[1]]+"\" class=\"textForm\" readonly value=\"Formulari text:\"><input type=\"text\">");
             $(butons).append("<button id=\"buttMod_"+formArray[1]+contNext[formArray[1]]+"\" class=\"buttMod\">Longitud</button>");
             break;
         case "Numero":
             $("#contForm_"+formArray[1]).append("<div id=\"contInput_"+formArray[1]+contNext[formArray[1]]+"\" class=\"contInput\"></div>"); 
-            $("#contInput_"+formArray[1]+contNext[formArray[1]]).append("<div class=\"textFrom\">Formulari numero:</div><input type=\"number\">");
+            $("#contInput_"+formArray[1]+contNext[formArray[1]]).append("<input id=\"textForm_"+formArray[1]+contNext[formArray[1]]+"\" class=\"textForm\" readonly value=\"Formulari numero:\"><input type=\"number\">");
             $(butons).append("<button id=\"buttMin_"+formArray[1]+contNext[formArray[1]]+"\" class=\"buttMod\">Min</button>");
             $(butons).append("<button id=\"buttMax_"+formArray[1]+contNext[formArray[1]]+"\" class=\"buttMod\">Max</button>");
             break;
         case "Mail":
             $("#contForm_"+formArray[1]).append("<div id=\"contInput_"+formArray[1]+contNext[formArray[1]]+"\" class=\"contInput\"></div>"); 
-            $("#contInput_"+formArray[1]+contNext[formArray[1]]).append("<div class=\"textFrom\">Formulari correu:</div><input type=\"email\" value=\"Formulari correu\">");
+            $("#contInput_"+formArray[1]+contNext[formArray[1]]).append("<input id=\"textForm_"+formArray[1]+contNext[formArray[1]]+"\" class=\"textForm\" readonly value=\"Formulari correu:\"><input type=\"email\" value=\"Formulari correu\">");
             break;
         case "Password":
             $("#contForm_"+formArray[1]).append("<div id=\"contInput_"+formArray[1]+contNext[formArray[1]]+"\" class=\"contInput\"></div>"); 
-            $("#contInput_"+formArray[1]+contNext[formArray[1]]).append("<div class=\"textFrom\">Formulari Password:</div><input type=\"password\">");
-            $(butons).append("<button id=\"buttMod_"+formArray[1]+contNext[formArray[1]]+"\" class=\"buttMod\">M</button>");
+            $("#contInput_"+formArray[1]+contNext[formArray[1]]).append("<input id=\"textForm_"+formArray[1]+contNext[formArray[1]]+"\" class=\"textForm\" readonly value=\"Formulari Password:\"><input type=\"password\">");
+            $(butons).append("<button id=\"buttMod_"+formArray[1]+contNext[formArray[1]]+"\" class=\"buttMod\">Longitud</button>"); 
             break;
         case "Date":
             $("#contForm_"+formArray[1]).append("<div id=\"contInput_"+formArray[1]+contNext[formArray[1]]+"\" class=\"contInput\"></div>"); 
-            $("#contInput_"+formArray[1]+contNext[formArray[1]]).append("<div class=\"textFrom\">Formulari data:</div><input type=\"date\">");
+            $("#contInput_"+formArray[1]+contNext[formArray[1]]).append("<input id=\"textForm_"+formArray[1]+contNext[formArray[1]]+"\" class=\"textForm\" readonly value=\"Formulari data:\"><input type=\"date\">");
+            $(butons).append("<button id=\"buttMin_"+formArray[1]+contNext[formArray[1]]+"\" class=\"buttMod\">Min</button>");
+            $(butons).append("<button id=\"buttMax_"+formArray[1]+contNext[formArray[1]]+"\" class=\"buttMod\">Max</button>");
             break;
         case "File":
             $("#contForm_"+formArray[1]).append("<div id=\"contInput_"+formArray[1]+contNext[formArray[1]]+"\" class=\"contInput\"></div>"); 
-            $("#contInput_"+formArray[1]+contNext[formArray[1]]).append("<div class=\"textFrom\">Formulari fitxer:</div><input type=\"file\">");
+            $("#contInput_"+formArray[1]+contNext[formArray[1]]).append("<input id=\"textForm_"+formArray[1]+contNext[formArray[1]]+"\" class=\"textForm\" readonly value=\"Formulari fitxer:\"><input type=\"file\">");
             break;
         case "Radio":
             if (contRadio[formArray[1]]==1){
@@ -60,8 +62,8 @@ function insertInput(){
             contRadio[formArray[1]]=1;
             
             $("#contForm_"+formArray[1]).append("<div id=\"contInput_"+formArray[1]+contNext[formArray[1]]+"\" class=\"contInput\"></div>"); 
-            $("#contInput_"+formArray[1]+contNext[formArray[1]]).append("<div id=\"radio_"+formArray[1]+"\" class=\"radioInput\"></div>");  
-            $("#radio_"+formArray[1]).append("<input type=\"radio\" name=\"radioOp_"+formArray[1]+"\"> Option "+contRadio[formArray[1]]+"<br>");
+            $("#contInput_"+formArray[1]+contNext[formArray[1]]).append("<div id=\"radio_"+formArray[1]+contNextR[formArray[1]]+"\" class=\"radioInput\"></div>");  
+            $("#radio_"+formArray[1]+contNextR[formArray[1]]).append("<input type=\"radio\" name=\"radioOp_"+formArray[1]+"\"> Option "+contRadio[formArray[1]]+"<br>");
             contRadio[formArray[1]]++;
             break;
         case "Checkbox":
@@ -107,6 +109,7 @@ function insertInput(){
     $(butons).append("<button id=\"buttDel_"+formArray[1]+contNext[formArray[1]]+"\" class=\"buttDel\">X</button>");
     $("#contInput_"+formArray[1]+contNext[formArray[1]]).append(butons);
     
+    $("#textForm_"+formArray[1]+contNext[formArray[1]]).dblclick(changeName);
     $("#buttDel_"+formArray[1]+contNext[formArray[1]]).click(deleteInput2);
     $("#buttMod_"+formArray[1]+contNext[formArray[1]]).click(modifyInput);
     $("#buttMin_"+formArray[1]+contNext[formArray[1]]).click(modifyInput);
@@ -122,21 +125,30 @@ function deleteInput2(){
     $(this).parent().parent().remove();
 };
 
+function changeName(){
+    $(this).removeAttr("readonly");
+    $(this).blur(function (){
+        $(this).attr("readonly", "");
+    });
+};
+
 function modifyInput(){
     switch ($(this).parent().prev().attr('type')) {
+        case "password": 
         case "text": 
             var inputLength = parseInt(prompt("Indica la longitud del Input:"));
             $(this).parent().prev().attr('size', inputLength);
             $(this).parent().prev().attr('maxlength', inputLength);
         break;
+        case "date":
         case "number":
             $(this).parent().prev().attr('name', 'quantity');
             if ($(this).attr("id").startsWith('buttMin')) {
-            var inputMin = parseInt(prompt("Indica el número mínim:"));
+            var inputMin = prompt($(this).parent().prev().attr('type')=="date" ? "Indica la data mínima:" : "Indica el número mínim:", $(this).parent().prev().attr('type')=="date" ? 'AAAA-MM-DD' : '');
             $(this).parent().prev().attr('min', inputMin);
             }
             if ($(this).attr("id").startsWith('buttMax')) {
-            var inputMax = parseInt(prompt("Indica el número màxim:"));
+            var inputMax = prompt($(this).parent().prev().attr('type')=="date" ? "Indica la data màxima:" : "Indica el número mínim:", $(this).parent().prev().attr('type')=="date" ? 'AAAA-MM-DD' : '');
             $(this).parent().prev().attr('max', inputMax);
             }
         break;
