@@ -74,8 +74,17 @@ main {
     justify-content: space-between;
 }
 
-.radioInput {
-    margin-right: 215px;
+.textForm {
+    background-color: lightblue;
+    border: none;
+    font-size: 20px;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none;
+    user-select: none; 
+    width: auto;
 }
 
 .checkInput {
