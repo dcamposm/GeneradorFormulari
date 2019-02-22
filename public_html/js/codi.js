@@ -56,7 +56,7 @@ function insertInput(){
             $("#contForm_"+formArray[1]).append("<div id=\"contInput_"+formArray[1]+contNext[formArray[1]]+"\" class=\"contInput\"></div>"); 
             $("#contInput_"+formArray[1]+contNext[formArray[1]]).append("<div id=\"radio_"+formArray[1]+contNextR[formArray[1]]+"\" class=\"radioInput\"></div>");  
             $("#radio_"+formArray[1]+contNextR[formArray[1]]).append("<input type=\"radio\" name=\"radioOp_"+formArray[1]+contNextR[formArray[1]]+"\"><input id=\"textForm_"+formArray[1]+contNext[formArray[1]]+"\" class=\"textForm\" readonly value=\" Option "+contRadio[formArray[1]+contNextR[formArray[1]]]+"\"><br>");
-            $(butons).append("<button id=\""+formArray[1]+contNextR[formArray[1]]+"\" class=\"buttOpt\">NewOption</button>");
+            $(butons).append("<button id=\""+formArray[1]+contNextR[formArray[1]]+"\" class=\"buttMod\">NewOption</button>");
             contRadio[formArray[1]+contNextR[formArray[1]]]++;
             break;
         case "Checkbox":
