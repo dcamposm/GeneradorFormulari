@@ -49,22 +49,15 @@ function insertInput(){
             $("#contInput_"+formArray[1]+contNext[formArray[1]]).append("<input id=\"textForm_"+formArray[1]+contNext[formArray[1]]+"\" class=\"textForm\" readonly value=\"Formulari fitxer:\"><input type=\"file\">");
             break;
         case "Radio":
-            if (contRadio[formArray[1]]==1){
-                $("#contForm_"+formArray[1]).append("<div id=\"contInput_"+formArray[1]+contNext[formArray[1]]+"\" class=\"contInput\"></div>"); 
-                $("#contInput_"+formArray[1]+contNext[formArray[1]]).append("<div id=\"radio_"+formArray[1]+"\" class=\"radioInput\"></div>");                
-            }            
-            $("#radio_"+formArray[1]).append("<input type=\"radio\" name=\"radioOp_"+formArray[1]+"\"> Option "+contRadio[formArray[1]]+"<br>");
-            contRadio[formArray[1]]++;
-            break;
-        case "NewRadio":
             $("#radio_"+formArray[1]).attr('id', 'radio_'+formArray[1]+contNextR[formArray[1]]);
             contNextR[formArray[1]]++;
-            contRadio[formArray[1]]=1;
+            contRadio[formArray[1]+contNextR[formArray[1]]]=1;
             
             $("#contForm_"+formArray[1]).append("<div id=\"contInput_"+formArray[1]+contNext[formArray[1]]+"\" class=\"contInput\"></div>"); 
             $("#contInput_"+formArray[1]+contNext[formArray[1]]).append("<div id=\"radio_"+formArray[1]+contNextR[formArray[1]]+"\" class=\"radioInput\"></div>");  
-            $("#radio_"+formArray[1]+contNextR[formArray[1]]).append("<input type=\"radio\" name=\"radioOp_"+formArray[1]+"\"> Option "+contRadio[formArray[1]]+"<br>");
-            contRadio[formArray[1]]++;
+            $("#radio_"+formArray[1]+contNextR[formArray[1]]).append("<input type=\"radio\" name=\"radioOp_"+formArray[1]+"\"> Option "+contRadio[formArray[1]+contNextR[formArray[1]]]+"<br>");
+            $(butons).append("<button id=\""+formArray[1]+contNextR[formArray[1]]+"\" class=\"buttOpt\">NewOption</button>");
+            contRadio[formArray[1]+contNextR[formArray[1]]]++;
             break;
         case "Checkbox":
             if (contCheck[formArray[1]]==1){
@@ -114,6 +107,7 @@ function insertInput(){
     $("#buttMod_"+formArray[1]+contNext[formArray[1]]).click(modifyInput);
     $("#buttMin_"+formArray[1]+contNext[formArray[1]]).click(modifyInput);
     $("#buttMax_"+formArray[1]+contNext[formArray[1]]).click(modifyInput);
+    $("#"+formArray[1]+contNextR[formArray[1]]).click(modifyOption);
     contNext[formArray[1]]++;
 };
 
@@ -155,6 +149,15 @@ function modifyInput(){
     }
 };
 
+function modifyOption(){
+    console.log(contRadio);
+    var form = $(this).attr("id");
+    var contOp = 2;
+    $("#radio_"+form).append("<input type=\"radio\" name=\"radioOp_"+form+"\"> Option "+contRadio[form]+"<br>");
+    contRadio[form]++;
+
+}
+
 function generadorFormulari(){
   if ($('#form').val() != "") {
      var nomForm = $('#form').val().split(" ").join("-");
@@ -180,7 +183,6 @@ function generadorFormulari(){
      $(menu).append("<button id=\"inputDate_"+nomForm+contGlobal+"\">Date</button>");
      $(menu).append("<button id=\"inputFile_"+nomForm+contGlobal+"\">File</button>");
      $(menu).append("<button id=\"inputRadio_"+nomForm+contGlobal+"\">Radio</button>");
-     $(menu).append("<button id=\"inputNewRadio_"+nomForm+contGlobal+"\">NewRadio</button>");
      $(menu).append("<button id=\"inputCheckbox_"+nomForm+contGlobal+"\">Checkbox</button>");
      $(menu).append("<button id=\"inputNewCheckbox_"+nomForm+contGlobal+"\">NewCheckbox</button>");
      $(menu).append("<button id=\"inputSelected_"+nomForm+contGlobal+"\">Selected</button>");
@@ -202,7 +204,6 @@ function generadorFormulari(){
      $("#inputDate_"+nomForm+contGlobal).click(insertInput);
      $("#inputFile_"+nomForm+contGlobal).click(insertInput);
      $("#inputRadio_"+nomForm+contGlobal).click(insertInput);
-     $("#inputNewRadio_"+nomForm+contGlobal).click(insertInput);
      $("#inputCheckbox_"+nomForm+contGlobal).click(insertInput);
      $("#inputNewCheckbox_"+nomForm+contGlobal).click(insertInput);
      $("#inputSelected_"+nomForm+contGlobal).click(insertInput);
