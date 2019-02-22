@@ -150,12 +150,13 @@ function modifyInput(){
 };
 
 function modifyOption(){
-    console.log(contRadio);
+    //console.log(contRadio);
     var form = $(this).attr("id");
     var contOp = 2;
-    $("#radio_"+form).append("<input type=\"radio\" name=\"radioOp_"+form+"\"> Option "+contRadio[form]+"<br>");
+    //<input type=\"radio\" name=\"radioOp_"+form+"\"><input id=\"textForm_"+form+"\" class=\"textForm\" readonly value=\" Option "+contRadio[form]+"\"><br>
+    $("#radio_"+form).append("<input type=\"radio\" name=\"radioOp_"+form+"\"><input id=\"textForm_"+form+contRadio[form]+"\" class=\"textForm\" readonly value=\" Option "+contRadio[form]+"\"><br>");
+    $("#textForm_"+form+contRadio[form]).dblclick(changeName);
     contRadio[form]++;
-
 }
 
 function generadorFormulari(){
